@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import Counter from './All/Counter';
 import './App.css';
+import AppFilter from './components/app-filter/AppFilter';
+import AppInfo from './components/app-info/AppInfo';
+import EmployersAddForm from './components/employers-add-form/EmployersAddForm';
+import EmployersList from './components/employers-list/EmployersList';
+import SearchPanel from './components/search-panel/SearchPanel';
 
 function App() {
+  const data = [
+    { name: 'Andy', salary: 1000, increase: false, id: 1 },
+    { name: 'Julia', salary: 2000, increase: false, id: 2 },
+    { name: 'Nika', salary: 500, increase: true, id: 3 },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppInfo />
+      <div className="search-panel">
+        <SearchPanel />
+        <AppFilter />
+      </div>
+      <EmployersList dataProp={data} />
+      <EmployersAddForm />
+      <Counter />
     </div>
   );
 }

@@ -2,16 +2,17 @@ import React from 'react';
 import EmployersListItem from '../employers-list-item/EmployersListItem';
 import './EmployersList.css';
 
-export default function EmployersList({ dataProp, onDelete }) {
+export default function EmployersList({ dataProp, onDelete, onToggleProp }) {
   const elements = dataProp.map((item) => {
     const { id, ...itemProps } = item;
     return (
       <EmployersListItem
         key={id}
         {...itemProps}
-        onDelete={() => {
-          onDelete(id);
-        }}
+        onDelete={() => onDelete(id)}
+        onToggleProp={(e) =>
+          onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))
+        }
       />
     );
   });
